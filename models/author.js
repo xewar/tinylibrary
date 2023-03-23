@@ -28,8 +28,14 @@ AuthorSchema.virtual("name").get(function () {
 AuthorSchema.virtual("url").get(function () {
   return `/catalog/author/${this._id}`;
 });
+//virtual for author's lifespan
+AuthorSchema.virtual("author_lifespan").get(function () {
+  return this.date_of_death
+    ? `${this.birth_formatted} - ${this.death_formatted}`
+    : `${this.birth_formatted} -`;
+});
 
-//virtual for author's date of birth and death
+//virtual for author's date of birth
 AuthorSchema.virtual("birth_formatted").get(function () {
   return this.date_of_birth
     ? DateTime.fromJSDate(this.date_of_birth).toLocaleString({
@@ -37,7 +43,7 @@ AuthorSchema.virtual("birth_formatted").get(function () {
       })
     : "";
 });
-//virtual for author's date of birth and death
+//virtual for author's date of death
 AuthorSchema.virtual("death_formatted").get(function () {
   return this.date_of_death
     ? DateTime.fromJSDate(this.date_of_death).toLocaleString({

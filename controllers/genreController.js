@@ -13,7 +13,7 @@ exports.genre_list = function (req, res, next) {
       }
       // Successful, so render
       res.render("genre_list", {
-        title: "genre",
+        title: "genres",
         genre_list: list_genre,
       });
     });
