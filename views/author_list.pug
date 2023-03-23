@@ -1,0 +1,16 @@
+extends layout 
+
+block content
+    h1=title 
+
+    ul
+        each author in author_list
+            li 
+                if author.birth_formatted
+                    a(href=author.url) #{author.name}
+                    span.light  (#{author.birth_formatted} - #{author.death_formatted})
+                else 
+                     a(href=author.url) #{author.name}
+
+        else
+            li There are no authors.

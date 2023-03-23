@@ -2,4 +2,13 @@ extends layout
 
 block content
   h1= title
-  p Hello + welcome to #{title}
+  p  a little library catalog
+
+    p the library contains:
+
+    ul
+      li books: !{data.book_count}
+      li copies: !{data.book_instance_count}
+      li copies available: !{data.book_instance_available_count}
+      li authors: !{data.author_count}
+      li genres: !{data.genre_count}  
