@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { DateTime } = require("luxon");
 
 const Schema = mongoose.Schema;
 
@@ -17,6 +18,17 @@ const BookInstanceSchema = new Schema({
 BookInstanceSchema.virtual("url").get(function () {
   //we don't use arrow function as we'll need the 'this' object
   return `/catalog/bookinstance/${this._id}`;
+});
+//virtual for due_back_formatted
+// BookInstanceSchema.virtual("due_back_formatted").get(function () {
+//   return DateTime.fromJSDate(this.due_back).toLocaleString(DateTime.DATE_MED);
+// });
+
+BookInstanceSchema.virtual("due_back_formatted").get(function () {
+  return DateTime.fromJSDate(this.due_back).toLocaleString({
+    month: "long",
+    day: "numeric",
+  });
 });
 
 //export model

@@ -1,17 +1,63 @@
 const Genre = require("../models/genre");
+const Book = require("../models/book");
+const async = require("async");
 
-// Display list of all Genre.
-exports.genre_list = (req, res) => {
-  res.send("NOT IMPLEMENTED: Genre list");
+// Display list of all genres
+exports.genre_list = function (req, res, next) {
+  Genre.find()
+    .sort({ name: 1 })
+    .populate("name")
+    .exec(function (err, list_genre) {
+      if (err) {
+        return next(err);
+      }
+      // Successful, so render
+      res.render("genre_list", {
+        title: "genre",
+        genre_list: list_genre,
+      });
+    });
 };
 
 // Display detail page for a specific Genre.
-exports.genre_detail = (req, res) => {
-  res.send(`NOT IMPLEMENTED: Genre detail: ${req.params.id}`);
+// The method uses async.parallel() to query the genre name and
+// its associated books in parallel, with the callback rendering the page
+// when (if) both requests complete successfully.
+
+// Display detail page for a specific Genre.
+exports.genre_detail = (req, res, next) => {
+  async.parallel(
+    {
+      genre(callback) {
+        Genre.findById(req.params.id).exec(callback);
+      },
+
+      genre_books(callback) {
+        Book.find({ genre: req.params.id }).exec(callback);
+      },
+    },
+    (err, results) => {
+      if (err) {
+        return next(err);
+      }
+      if (results.genre == null) {
+        // No results.
+        const err = new Error("Genre not found");
+        err.status = 404;
+        return next(err);
+      }
+      // Successful, so render
+      res.render("genre_detail", {
+        title: "Genre Detail",
+        genre: results.genre,
+        genre_books: results.genre_books,
+      });
+    }
+  );
 };
 
 // Display Genre create form on GET.
-exports.genre_create_get = (req, res) => {
+exports.genre_create_get = (req, res, next) => {
   res.send("NOT IMPLEMENTED: Genre create GET");
 };
 

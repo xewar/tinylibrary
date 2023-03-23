@@ -1,8 +1,43 @@
+@import url("https://use.typekit.net/hlh5twe.css");
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: "futura-pt", sans-serif;
+  /* background-color: rgba(98, 168, 229, 0.02); */
+  color: rgba(67, 80, 96);
+}
+.sidebar-nav {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+}
+li {
+  list-style: none;
 }
 
 a {
-  color: #00b7ff;
+  color: rgba(0, 131, 138, 0.6);
+}
+a:hover {
+  color: rgba(0, 131, 138);
+}
+.success {
+  color: rgba(0, 131, 138, 0.8);
+}
+.warning {
+  color: rgb(98, 168, 229);
+}
+.danger {
+  color: rgb(255, 72, 176);
+}
+span {
+  background-color: rgba(255, 72, 176, 0.05);
+}
+span.light {
+  background-color: transparent;
+  color: rgba(67, 80, 96, 0.5);
+}
+
+.genre {
+  margin-left: 20px;
+  margin-top: 20px;
 }
