@@ -74,6 +74,9 @@ span.light {
 .submitBtn {
   background-color: var(--light_blue);
   color: var(--text);
+  width: 6em;
+  outline: none;
+  border: none;
 }
 .submitBtn:hover {
   background-color: var(--med_pink);
@@ -102,13 +105,19 @@ span.light {
 .customInput:focus {
   outline: none;
   border: 5px solid var(--light_blue);
+  border-color: var(--light_blue);
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 *:focus {
   outline: none;
 }
 
-.form-control:focus {
-  border-color: var(--light_blue);
-  -webkit-box-shadow: none;
-  box-shadow: none;
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.form-group {
+  display: flex;
+  gap: 1em;
 }
