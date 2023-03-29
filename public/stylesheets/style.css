@@ -1,12 +1,22 @@
 @import url("https://use.typekit.net/hlh5twe.css");
-
+:root {
+  --text: rgba(67, 80, 96);
+  --light_blue: rgb(98, 168, 229, 0.2);
+  --med_blue: rgb(98, 168, 229, 0.5);
+  --teal: rgba(0, 131, 138, 0.6);
+  --cornflower: rgb(98, 168, 229);
+  --hot_pink: rgb(255, 72, 176, 0.8);
+  --blush: rgba(255, 72, 176, 0.05);
+  --med_pink: rgba(255, 72, 176, 0.35);
+  --bluegray: rgba(67, 80, 96, 0.5);
+}
 body {
   font-family: "futura-pt", sans-serif;
   /* background-color: rgba(98, 168, 229, 0.02); */
-  color: rgba(67, 80, 96);
+  color: var(--text);
 }
 .col-sm-2 {
-  background-color: rgb(98, 168, 229, 0.2);
+  background-color: var(--light_blue);
 }
 @media only screen and (min-width: 450px) {
   .col-sm-10 {
@@ -34,29 +44,71 @@ h1 {
   font-size: 2.25em;
 }
 a {
-  color: rgba(0, 131, 138, 0.6);
+  color: var(--teal);
 }
 a:hover {
-  color: rgba(0, 131, 138);
+  color: var(--teal);
 }
 .success {
-  color: rgba(0, 131, 138, 0.8);
+  color: var(--teal);
 }
 .warning {
-  color: rgb(98, 168, 229);
+  color: var(--cornflower);
 }
 .danger {
-  color: rgb(255, 72, 176);
+  color: var(--hot_pink);
 }
 span {
-  background-color: rgba(255, 72, 176, 0.05);
+  background-color: var(--blush);
 }
 span.light {
   background-color: transparent;
-  color: rgba(67, 80, 96, 0.5);
+  color: var(--bluegray);
 }
 
 .genre {
   margin-left: 20px;
   margin-top: 20px;
+}
+
+.submitBtn {
+  background-color: var(--light_blue);
+  color: var(--text);
+}
+.submitBtn:hover {
+  background-color: var(--med_pink);
+}
+.submitBtn:focus {
+  outline: none;
+  border-color: transparent;
+  -webkit-box-shadow: none;
+}
+.errorDiv {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.errorMsg {
+  font-style: italic;
+  color: var(--med_blue);
+}
+
+.customInput {
+  border: 5px solid var(--light_blue);
+  color: var(--med_pink);
+}
+
+.form-control:focus,
+.customInput:focus {
+  outline: none;
+  border: 5px solid var(--light_blue);
+}
+*:focus {
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: var(--light_blue);
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
